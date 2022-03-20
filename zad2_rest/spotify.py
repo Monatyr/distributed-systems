@@ -9,25 +9,19 @@ from html_result import create_html
 import os
 import glob
 
-SPOTIPY_CLIENT_ID = '5a9d277b38f142a0ae8a2143a854d1af'
-SPOTIPY_CLIENT_SECRET =  '42c0c2c983914182a79764af09a60618'
+
 
 spotify = spotipy.Spotify(client_credentials_manager=SpotifyClientCredentials(client_id=SPOTIPY_CLIENT_ID, client_secret=SPOTIPY_CLIENT_SECRET))
 
 
 class Spotify(Resource):
-    # def __init__(self, api):
-    #     print("hel")
-    #     self.api = api
-
     def get(self):
         files = glob.glob('templates/*.html')
         files.remove("templates\\index.html")
         for f in files:
             os.remove(f)
-        # print("FILES: ", files)
-        args = request.args
 
+        args = request.args
         if args['type'] == 'artist_most_popular':
             data = get_songs(args['id'])
             file_path = create_html(data)
@@ -87,7 +81,7 @@ def get_albums(artist_name: str):
         for album in albums:
             flag = True
             for album_in_res in result:
-                if album_in_res['name'] == album['name']:
+                if album_in_res['name'].lower() == album['name'].lower():
                     flag = False
                     break
             if flag:
@@ -104,16 +98,28 @@ def get_albums(artist_name: str):
 def get_songs(artist_name: str, country: str = 'US'):
     try:
         artist_uri = get_arist_uri(artist_name)
-        albums = spotify.artist_albums(artist_id=artist_uri, album_type='album', limit=10)['items']
-        result = spotify.artist_top_tracks(artist_id=artist_uri, country=country)
-        songs = result['tracks']
+        result = []
+        r = spotify.artist_top_tracks(artist_id=artist_uri, country=country)
+        songs = r['tracks']
+
+        print(songs[0])
+
         for song in songs:
-            print(song['name'], song['album']['name'], print(song['album']['images'][0]['url']))
+            minutes = str((song['duration_ms']//60000))
+            seconds = str((song['duration_ms']//1000)%60)
+            seconds = '0'+ seconds if len(seconds) == 1 else seconds
+            song_len = minutes + ':' + seconds
+            my_song = {'name': song['name'], 'album': song['album']['name'], 'image': song['album']['images'][0]['url'], 'time_length': song_len, 'artist': song['album']['artists'][0]['name']}
+            result.append(my_song)
+            # print(song['name'], song['album']['name'], print(song['album']['images'][0]['url']))
+        
+        data = {'type': 'artist_songs', 'data': result}
+        return data
     except:
         print('get songs')
 
 
 if __name__ == "__main__":
 
-    get_albums('The Beatles')
-    # get_songs('the beatles')
+    # get_albums('The Beatles')
+    get_songs('the beatles')

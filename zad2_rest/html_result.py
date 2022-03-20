@@ -18,9 +18,11 @@ def create_html(data):
         file.write('<tr>\n<th>Album</th>\n<th>Number of tracks</th>\n<th>Release date</th>\n<th>Cover</th>\n</tr>')
         for album in data['data']:
             file.write(f'<tr>\n<td>{album["name"]}</td>\n<td>{album["tracks"]}</td>\n<td>{album["release_date"]}</td>\n<td><img src={album["image"]} width=100></td>\n</tr>\n')
-            # file.write(f'<label>{album["name"]}</label><img src={album["image"]} width="100"><br></br>\n')
-    # file.write('<form action="/"')
-    #/body
+    elif data['type'] == 'artist_songs':
+        file.write('<table style="width:100%">\n')
+        file.write('<tr>\n<th>Song</th>\n<th>Album</th>\n<th>Length</th>\n<th>Cover</th>\n</tr>')
+        for song in data['data']:
+            file.write(f'<tr>\n<td>{song["name"]}</td>\n<td>{song["album"]}</td>\n<td>{song["time_length"]}</td>\n<td><img src={song["image"]} width=100></td>\n</tr>\n')
     file.write('</body>\n')
     file.write('</html>')
     file.close()
