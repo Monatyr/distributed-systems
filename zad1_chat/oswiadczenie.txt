@@ -1,0 +1,1 @@
+Oświadczam, że zadanie wykonałem samodzielnie, posiłkując się jedynie wiedzą o działaniu socketów w Pythonie.

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Music finder</title>
+</head>
+<body>
+
+<form action="/search" method="GET">
+    <label for="category">Category:</label>
+    <select name="type" id="type">
+      <optgroup label="Artists">
+        <option value="artist_most_popular">Popular songs</option>
+        <option value="albums">Albums</option>
+      </optgroup>
+      <optgroup label="Songs">
+        <option value="world_most_popular">Most popular</option>
+        <option value="random">Random</option>
+      </optgroup>
+    </select>
+    <br><br>
+    <label for="id">Name:</label>
+    <input name="id" />
+    <br/>
+    <br>
+    <input type="submit" value="Search">
+  </form>
+
+</body>
+</html>
