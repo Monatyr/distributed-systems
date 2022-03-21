@@ -1,3 +1,4 @@
+from codecs import decode
 from flask import Flask, request, redirect
 from flask_restful import Api, Resource
 import spotipy
@@ -13,27 +14,30 @@ import glob
 
 spotify = spotipy.Spotify(client_credentials_manager=SpotifyClientCredentials(client_id=SPOTIPY_CLIENT_ID, client_secret=SPOTIPY_CLIENT_SECRET))
 
-
 class Spotify(Resource):
     def get(self):
-        files = glob.glob('templates/*.html')
-        files.remove("templates\\index.html")
-        for f in files:
-            os.remove(f)
+        try:
+            files = glob.glob('templates/*.html')
+            files.remove("templates\\index.html")
+            for f in files:
+                os.remove(f)
 
-        args = request.args
-        if args['type'] == 'artist_most_popular':
-            data = get_songs(args['id'])
+            args = request.args
+            if args['type'] == 'artist_most_popular':
+                data = get_songs(args['id'])
+            elif args['type'] == 'albums':
+                data = get_albums(args['id'])
+            elif args['type'] == 'recommended_artists':
+                data = get_recommended(args['id'])
+                
+            if data is None:
+                return f'Sorry, we could not find the result for "{args["id"]}"'
             file_path = create_html(data)
-        elif args['type'] == 'albums':
-            data = get_albums(args['id'])
-            file_path = create_html(data)
-        else:
-            print("TO IMPLEMENT")
-
-        file_name = file_path[10:]
-        file_name = file_name[:-5]
-        return redirect('result/'+ file_name)
+            file_name = file_path[10:]
+            file_name = file_name[:-5]
+            return redirect('result/'+ file_name)
+        except:
+            return "An error has occured"
 
 
 
@@ -75,7 +79,7 @@ def get_arist_uri(artist_name: str):
 def get_albums(artist_name: str):
     try:
         artist_uri = get_arist_uri(artist_name)
-        albums = spotify.artist_albums(artist_id=artist_uri, album_type='album', limit=10)['items']
+        albums = spotify.artist_albums(artist_id=artist_uri, album_type='album', limit=50)['items']
         result = []
 
         for album in albums:
@@ -102,8 +106,6 @@ def get_songs(artist_name: str, country: str = 'US'):
         r = spotify.artist_top_tracks(artist_id=artist_uri, country=country)
         songs = r['tracks']
 
-        print(songs[0])
-
         for song in songs:
             minutes = str((song['duration_ms']//60000))
             seconds = str((song['duration_ms']//1000)%60)
@@ -111,7 +113,6 @@ def get_songs(artist_name: str, country: str = 'US'):
             song_len = minutes + ':' + seconds
             my_song = {'name': song['name'], 'album': song['album']['name'], 'image': song['album']['images'][0]['url'], 'time_length': song_len, 'artist': song['album']['artists'][0]['name']}
             result.append(my_song)
-            # print(song['name'], song['album']['name'], print(song['album']['images'][0]['url']))
         
         data = {'type': 'artist_songs', 'data': result}
         return data
@@ -119,7 +120,27 @@ def get_songs(artist_name: str, country: str = 'US'):
         print('get songs')
 
 
-if __name__ == "__main__":
+def get_recommended(artist_name: str):
+    try:
+        print(artist_name)
+        print(get_arist_uri(artist_name))
+        result = []
+        artists = spotify.artist_related_artists(get_arist_uri(artist_name))['artists']
 
-    # get_albums('The Beatles')
+        for el in artists:
+            name = el['name']
+            followers = el['followers']['total']
+            image = el['images'][0]['url']
+            genres = el['genres']
+            my_artist = {'name': name, 'followers': followers, 'genres': genres, 'image': image, 'artist': artist_name}
+            result.append(my_artist)
+
+        data = {'type': 'similar', 'data': result}
+        return data
+    except:
+        pass
+
+
+if __name__ == "__main__":
     get_songs('the beatles')
+    get_recommended("Dire Straits")

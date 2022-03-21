@@ -13,13 +13,29 @@ api = Api(app)
 def index():
     return render_template("index.html")
 
-@app.route("/result/<result_name>", methods=['GET', 'POST'])
+@app.route("/result/<result_name>")
 def result(result_name):
-    print("RESULT: ",result_name)
-    result = request.form
-    return render_template(f"{result_name}.html", result=result)
+    try:
+        result = request.form
+        return render_template(f"{result_name}.html", result=result)
+    except Exception as e:
+        print(e)
+        return 'Could not deliver results'
 
 
+def handle_bad_request(e):
+    return 'Bad request!', 400
+
+def handle_not_found(e):
+    return 'Not found!', 404
+
+def handle_internal_server(e):
+    return 'Internal server error!', 500
+
+
+app.register_error_handler(400, handle_bad_request)
+app.register_error_handler(404, handle_not_found)
+app.register_error_handler(500, handle_internal_server)
 
 if __name__ == "__main__":
     api.add_resource(Spotify, "/search")
