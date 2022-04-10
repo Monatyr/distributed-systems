@@ -9,6 +9,7 @@ public class Supplier extends RabbitClient{
 
         final String supplierName;
         String[] availableSupplies;
+        int orderCount = 0;
 
     public Supplier(String supplierName, String[] availableSupplies) throws IOException {
         super();
@@ -30,7 +31,7 @@ public class Supplier extends RabbitClient{
             @Override
             public void handleDelivery(String consumerTag, Envelope envelope, AMQP.BasicProperties properties, byte[] body) throws IOException {
                 String message = new String(body, "UTF-8");
-                System.out.println(supplierName + " received: " + message);
+                System.out.println(supplierName + " received order " + String.valueOf(++orderCount) + ": " + message);
                 channel.basicAck(envelope.getDeliveryTag(), false);
             }
         };

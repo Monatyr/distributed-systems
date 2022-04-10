@@ -32,6 +32,10 @@ public class Team extends RabbitClient{
                 System.out.println("- " + supplyName);
 
             String[] supplies = reader.readLine().split("\\s+");
+            System.out.print(this.teamName + " placed an order for: ");
+            for(String supply: supplies)
+                System.out.print(supply + ", ");
+            System.out.println();
             for(String supplyName: supplies){
                 String message = this.teamName + " requests '" + supplyName + "'";
                 this.channel.basicPublish(this.requirementsExchangeName, supplyName.toUpperCase(), null, message.getBytes(StandardCharsets.UTF_8));
@@ -45,7 +49,6 @@ public class Team extends RabbitClient{
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         String teamName = reader.readLine();
         Team team = new Team(teamName);
-//        Team team = new Team("TEAM_" + Integer.toString(1 + Team.teamCount++));
         team.run();
     }
 
