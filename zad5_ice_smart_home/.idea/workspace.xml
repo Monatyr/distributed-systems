@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="753d8d35-fcd1-41d4-a972-e26b068a4cc5" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../zad2_rest/.cache" beforeDir="false" afterPath="$PROJECT_DIR$/../zad2_rest/.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../zad2_rest/html_result.py" beforeDir="false" afterPath="$PROJECT_DIR$/../zad2_rest/html_result.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../zad2_rest/spotify.py" beforeDir="false" afterPath="$PROJECT_DIR$/../zad2_rest/spotify.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../zad3_rabbitmq/zad3_rabbitmq.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../zad3_rabbitmq/zad3_rabbitmq.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../zad4_akka/app/src/main/java/edu/agh/reactive/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/../zad4_akka/app/src/main/java/edu/agh/reactive/App.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="28me9IPOLoSnwIRwqtDlzLFZgU0" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../lab6_gRPC" />
+    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.2" />
+  </component>
+  <component name="RunManager" selected="Application.IceServer">
+    <configuration name="IceClient" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="sr.ice.client.IceClient" />
+      <module name="Ice" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="sr.ice.client.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="IceServer" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="ALTERNATIVE_JRE_PATH" value="corretto-1.8" />
+      <option name="MAIN_CLASS_NAME" value="sr.ice.server.IceServer" />
+      <module name="Ice" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="sr.ice.server.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="Application.IceClient" />
+      <item itemvalue="Application.IceServer" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.IceServer" />
+        <item itemvalue="Application.IceClient" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="753d8d35-fcd1-41d4-a972-e26b068a4cc5" name="Changes" comment="" />
+      <created>1651826038019</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1651826038019</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+</project>
