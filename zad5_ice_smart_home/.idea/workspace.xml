@@ -2,28 +2,43 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="753d8d35-fcd1-41d4-a972-e26b068a4cc5" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/oswiadczenie.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../zad2_rest/.cache" beforeDir="false" afterPath="$PROJECT_DIR$/../zad2_rest/.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../zad2_rest/html_result.py" beforeDir="false" afterPath="$PROJECT_DIR$/../zad2_rest/html_result.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../zad2_rest/spotify.py" beforeDir="false" afterPath="$PROJECT_DIR$/../zad2_rest/spotify.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../zad3_rabbitmq/zad3_rabbitmq.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../zad3_rabbitmq/zad3_rabbitmq.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../zad4_akka/app/src/main/java/edu/agh/reactive/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/../zad4_akka/app/src/main/java/edu/agh/reactive/App.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Demo/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/calculator_ice.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/config.client" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/config.server" beforeDir="false" afterPath="$PROJECT_DIR$/config.server" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/generated/Demo/A.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/generated/Demo/Calc.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/generated/Demo/CalcPrx.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/generated/Demo/NoInput.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/generated/Demo/_CalcPrxI.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/generated/Demo/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/generated/Demo/operation.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/generated/calculator_ice.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/generated/ice_client.py" beforeDir="false" afterPath="$PROJECT_DIR$/generated/ice_client.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Ice/Demo/A.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Ice/Demo/Calc$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Ice/Demo/Calc.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Ice/Demo/CalcPrx.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Ice/Demo/NoInput.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Ice/Demo/_CalcPrxI.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Ice/Demo/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Ice/Demo/operation.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Ice/calculator_ice.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Ice/ice_client.py" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Ice/ice_client.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Ice/sr/ice/server/FridgeI.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Ice/sr/ice/server/FridgeI.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Ice/sr/ice/server/FridgeWithFreezerI.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Ice/sr/ice/server/FridgeWithFreezerI.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Ice/sr/ice/server/HumiditySensorI.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Ice/sr/ice/server/HumiditySensorI.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Ice/sr/ice/client/IceClient.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Ice/sr/ice/server/CalcI.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Ice/sr/ice/server/IceServer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Ice/sr/ice/server/IceServer.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Ice/sr/ice/server/MicrowaveI.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Ice/sr/ice/server/MicrowaveI.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Ice/sr/ice/server/PressureSensorI.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Ice/sr/ice/server/PressureSensorI.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Ice/sr/ice/server/SensorI.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Ice/sr/ice/server/SensorI.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sr/ice/server/FridgeI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sr/ice/server/FridgeI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sr/ice/server/FridgeWithFreezerI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sr/ice/server/FridgeWithFreezerI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sr/ice/server/HumiditySensorI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sr/ice/server/HumiditySensorI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/slice/calculator.ice" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sr/ice/client/IceClient.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sr/ice/server/CalcI.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sr/ice/server/IceServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sr/ice/server/IceServer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sr/ice/server/MicrowaveI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sr/ice/server/MicrowaveI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sr/ice/server/PressureSensorI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sr/ice/server/PressureSensorI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sr/ice/server/SensorI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sr/ice/server/SensorI.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,7 +65,8 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../lab6_gRPC" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../intelligentHouse" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -73,6 +89,7 @@
       <option name="ALTERNATIVE_JRE_PATH" value="corretto-1.8" />
       <option name="MAIN_CLASS_NAME" value="sr.ice.server.IceServer" />
       <module name="Ice" />
+      <option name="PROGRAM_PARAMETERS" value="--Ice.Config=config.server" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="sr.ice.server.*" />
