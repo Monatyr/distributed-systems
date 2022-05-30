@@ -7,7 +7,7 @@ import java.util.Map;
 
 public class PressureSensorI extends SensorI implements Devices.PressureSensor {
 
-//    private float pressure;
+//    private float pressure = 1014;
     private final Map<String, Float> pressures = new HashMap<String, Float>();
 
     @Override
@@ -16,6 +16,8 @@ public class PressureSensorI extends SensorI implements Devices.PressureSensor {
         float currPressure = pressures.get(current.id.name);
         System.out.println(current.id.name + " - get pressure: " + currPressure);
         return currPressure;
+//        System.out.println(current.id + " - get pressure: " + pressure);
+//        return pressure;
     }
 
     @Override
@@ -30,8 +32,10 @@ public class PressureSensorI extends SensorI implements Devices.PressureSensor {
     public Map<String, Float> getAllMeasurements(Current current) {
         makeMeasurements(current);
         Map<String, Float> measurements = super.getAllMeasurements(current);
-        measurements.put("pressure", pressures.get(current.id.name));
-        System.out.println(" pressure: " + pressures.get(current.id.name));
+        measurements.put("pressure [hPa]", pressures.get(current.id.name));
+        System.out.println(" pressure [hPa]: " + pressures.get(current.id.name));
+//        measurements.put("pressure", pressure);
+//        System.out.println(" pressure: " + pressure);
         return measurements;
     }
 }

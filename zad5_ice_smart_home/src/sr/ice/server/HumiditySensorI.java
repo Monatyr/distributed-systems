@@ -16,20 +16,25 @@ public class HumiditySensorI extends SensorI implements HumiditySensor {
         makeMeasurements(current);
         System.out.println(current.id.name + " - get humidity: " + humidities.get(current.id.name) + "%");
         return humidities.get(current.id.name);
+//        System.out.println(current.id + " - get humidity: " + humidity + "%");
+//        return humidity;
     }
 
     @Override
     public void makeMeasurements(Current current) {
         super.makeMeasurements(current);
         humidities.put(current.id.name, (float) ((Math.random() * 100)));
+//        humidity = (float) ((Math.random() * 100));
     }
 
     @Override
     public Map<String, Float> getAllMeasurements(Current current) {
         makeMeasurements(current);
         Map<String, Float> measurements = super.getAllMeasurements(current);
-        measurements.put("humidity", humidities.get(current.id.name));
-        System.out.print(" humidity: " + humidities.get(current.id.name) + "%");
+        measurements.put("humidity [%]", humidities.get(current.id.name));
+        System.out.println(" humidity [%]: " + humidities.get(current.id.name) + "%");
+//        measurements.put("humidity", humidity);
+//        System.out.println(" humidity: " + humidity + "%");
         return measurements;
     }
 }

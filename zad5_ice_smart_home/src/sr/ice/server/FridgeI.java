@@ -16,11 +16,12 @@ public class FridgeI implements Fridge {
 
     @Override
     public void switchLight(boolean lightState, Current current) {
-        lightsOn.put(current.id.name, lightState);
-//        lightsOn.putIfAbsent(current.id.name, false);
-//        boolean isLight = lightsOn.get(current.id.name);
+//        lightsOn.put(current.id.name, lightState);
+        lightsOn.putIfAbsent(current.id.name, false);
+        boolean isLight = lightsOn.get(current.id.name);
+//        lightOn = lightState;
         System.out.println(current.id.name + " - switch light to: " + lightState);
-//        lightsOn.put(current.id.name, !isLight);
+        lightsOn.put(current.id.name, !isLight);
     }
 
     @Override
@@ -28,6 +29,8 @@ public class FridgeI implements Fridge {
         lightsOn.putIfAbsent(current.id.name, false);
         System.out.println(current.id.name + " - is light on: " + lightsOn.get(current.id.name));
         return lightsOn.get(current.id.name);
+//        System.out.println(current.id + " - is light on: " + lightOn);
+//        return lightOn;
     }
 
     @Override
@@ -38,6 +41,7 @@ public class FridgeI implements Fridge {
         }
         System.out.println(current.id.name + " - change fridge temperature to: " + newTemp);
         fridgeTemps.put(current.id.name, newTemp);
+//        fridgeTemp = newTemp;
     }
 
     @Override
@@ -45,5 +49,7 @@ public class FridgeI implements Fridge {
         fridgeTemps.putIfAbsent(current.id.name, (float) 6);
         System.out.println(current.id.name + " - get fridge temperature: " + fridgeTemps.get(current.id.name));
         return fridgeTemps.get(current.id.name);
+//        System.out.println(current.id + " - get fridge temperature: " + fridgeTemp);
+//        return fridgeTemp;
     }
 }

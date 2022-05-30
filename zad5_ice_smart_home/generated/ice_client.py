@@ -10,33 +10,35 @@ def signal_handler(signal, frame):
 signal.signal(signal.SIGINT, signal_handler)
 
 with Ice.initialize(sys.argv) as communicator:
-    # base = communicator.stringToProxy('calc/calc11:tcp -h 127.0.0.2 -p 10000')
-    # base = communicator.stringToProxy('calc/calc11:default -p 10000')
-    # calculator = Demo.CalcPrx.checkedCast(base)
-    # print(calculator.add(1, 2))
 
     devices_manager_base_1 = communicator.stringToProxy('manager/dm:tcp -h 127.0.0.2 -p 10000')
 
     fridge_base_1 = communicator.stringToProxy('fridge/f1:tcp -h 127.0.0.2 -p 10000')
     fridge_base_2 = communicator.stringToProxy('fridge/f2:tcp -h 127.0.0.2 -p 10000')
-    fridge_with_freezer_base = communicator.stringToProxy('fridge/fwf1:tcp -h 127.0.0.2 -p 10000')
+    fridge_with_freezer_base = communicator.stringToProxy('freezer/fwf1:tcp -h 127.0.0.2 -p 10000')
     microwave_base = communicator.stringToProxy('microwave/m1:tcp -h 127.0.0.2 -p 10000')
     sensor_base = communicator.stringToProxy('sensor/s1:tcp -h 127.0.0.2 -p 10000')
-    pressure_sensor_base_1 = communicator.stringToProxy('sensor/ps1:tcp -h 127.0.0.2 -p 10000')
-    pressure_sensor_base_2 = communicator.stringToProxy('sensor/ps2:tcp -h 127.0.0.2 -p 10000')
-    humidity_sensor_base_1 = communicator.stringToProxy('sensor/hs1:tcp -h 127.0.0.2 -p 10000')
+    pressure_sensor_base_1 = communicator.stringToProxy('psensor/ps1:tcp -h 127.0.0.2 -p 10000')
+    pressure_sensor_base_2 = communicator.stringToProxy('psensor/ps2:tcp -h 127.0.0.2 -p 10000')
+    humidity_sensor_base_1 = communicator.stringToProxy('hsensor/hs1:tcp -h 127.0.0.2 -p 10000')
 
     devices_manager_1 = Devices.DevicesManagerPrx.checkedCast(devices_manager_base_1)
 
     fridge_1 = Devices.FridgePrx.checkedCast(fridge_base_1)
     fridge_2 = Devices.FridgePrx.checkedCast(fridge_base_2)
-    fridge_with_freezer_1 = Devices.FridgeWithFreezerPrx.checkedCast(fridge_with_freezer_base)
     microwave_1 = Devices.MicrowavePrx.checkedCast(microwave_base)
-    sensor_1 = Devices.SensorPrx.checkedCast(sensor_base)
-    pressure_sensor_1 = Devices.PressureSensorPrx.checkedCast(pressure_sensor_base_1)
-    pressure_sensor_2 = Devices.PressureSensorPrx.checkedCast(pressure_sensor_base_2)
-    humidity_sensor_1 = Devices.HumiditySensorPrx.checkedCast(humidity_sensor_base_1)
 
+    # fridge_with_freezer_1 = Devices.FridgeWithFreezerPrx.checkedCast(fridge_with_freezer_base)
+    # sensor_1 = Devices.SensorPrx.checkedCast(sensor_base)
+    # pressure_sensor_1 = Devices.PressureSensorPrx.checkedCast(pressure_sensor_base_1)
+    # pressure_sensor_2 = Devices.PressureSensorPrx.checkedCast(pressure_sensor_base_2)
+    # humidity_sensor_1 = Devices.HumiditySensorPrx.checkedCast(humidity_sensor_base_1)
+
+
+#####
+    # sensor_base2 = communicator.stringToProxy('sensor/s2:tcp -h 127.0.0.2 -p 10000')
+    # sensor_2 = Devices.SensorPrx.checkedCast(sensor_base2)
+#####
     print("\nTo send a command type: <device_name> <function_name> <args>\nIf you don't know devices' names type: 'names'\n")
 
     while True:
@@ -75,7 +77,9 @@ with Ice.initialize(sys.argv) as communicator:
                     print(fridge_2.getFridgeTemp())
                 else:
                     print("Invalid function")
-            elif(command[1] == "fwf1"): #Lodówka z zamrażarką
+        elif(command[0] == "freezer"):
+            if(command[1] == "fwf1"): #Lodówka z zamrażarką
+                fridge_with_freezer_1 = Devices.FridgeWithFreezerPrx.checkedCast(fridge_with_freezer_base)
                 if(command[2] == "switchlight"):
                     fridge_with_freezer_1.switchLight(command[3] == 'true')
                 elif(command[2] == "islighton"):
@@ -87,7 +91,7 @@ with Ice.initialize(sys.argv) as communicator:
                 elif(command[2] == "setfreezertemp"):
                     fridge_with_freezer_1.setFreezerTemp(float(command[3]))
                 elif(command[2] == "getfreezertemp"):
-                    print(fridge_with_freezer_1.getFreezreTemp())
+                    print(fridge_with_freezer_1.getFreezerTemp())
                 else:
                     print("Invalid function")
         elif(command[0] == "microwave"): #MIKROFALE
@@ -98,8 +102,9 @@ with Ice.initialize(sys.argv) as communicator:
                     print(microwave_1.getTemp())
                 else:
                     print("Invalid function")
-        elif(command[0] == "sensor"):
+        elif(command[0] == "sensor"): #SENSORY
             if(command[1] == "s1"):
+                sensor_1 = Devices.SensorPrx.checkedCast(sensor_base)
                 if(command[2] == "gettemp"):
                     print(sensor_1.getTemp())
                 elif(command[2] == "getluminousintensity"):
@@ -112,7 +117,9 @@ with Ice.initialize(sys.argv) as communicator:
                     print(sensor_1.getAllMeasurements())
                 else:
                     print("Invalid funciton")
+        elif(command[0] == "psensor"): #SENSORY Z CIŚNIENIEM
             if(command[1] == "ps1"):
+                pressure_sensor_1 = Devices.PressureSensorPrx.checkedCast(pressure_sensor_base_1)
                 if(command[2] == "gettemp"):
                     print(pressure_sensor_1.getTemp())
                 elif(command[2] == "getluminousintensity"):
@@ -127,8 +134,9 @@ with Ice.initialize(sys.argv) as communicator:
                     print(pressure_sensor_1.getPressure())
                 else:
                     print("Invalid funciton")
-            if(command[1] == "ps2"):
+            elif(command[1] == "ps2"):
                 if(command[2] == "gettemp"):
+                    pressure_sensor_2 = Devices.PressureSensorPrx.checkedCast(pressure_sensor_base_2)
                     print(pressure_sensor_2.getTemp())
                 elif(command[2] == "getluminousintensity"):
                     print(pressure_sensor_2.getLuminousIntensity())
@@ -142,7 +150,9 @@ with Ice.initialize(sys.argv) as communicator:
                     print(pressure_sensor_2.getPressure())
                 else:
                     print("Invalid funciton")
+        elif(command[0] == "hsensor"): #SENSORY Z WILGOCIĄ
             if(command[1] == "hs1"):
+                humidity_sensor_1 = Devices.HumiditySensorPrx.checkedCast(humidity_sensor_base_1)
                 if(command[2] == "gettemp"):
                     print(humidity_sensor_1.getTemp())
                 elif(command[2] == "getluminousintensity"):
@@ -159,3 +169,5 @@ with Ice.initialize(sys.argv) as communicator:
                     print(humidity_sensor_1.getHumidity())
                 else:
                     print("Invalid funciton")
+            # elif(command[1] == "s2"):
+            #     print(sensor_2.getTemp())

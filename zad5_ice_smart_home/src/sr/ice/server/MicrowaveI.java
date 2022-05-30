@@ -21,6 +21,7 @@ public class MicrowaveI implements Devices.Microwave {
         }
         System.out.println(current.id.name + " - change microwave temperature to: " + newTemp);
         temperatures.put(current.id.name, newTemp);
+//        temperature = newTemp;
     }
 
     @Override
@@ -28,5 +29,7 @@ public class MicrowaveI implements Devices.Microwave {
         temperatures.putIfAbsent(current.id.name, (float) 0);
         System.out.println(current.id.name + " - get microwave temperature: " + temperatures.get(current.id.name));
         return temperatures.get(current.id.name);
+//        System.out.println(current.id + " - get microwave temperature: " + temperature);
+//        return temperature;
     }
 }

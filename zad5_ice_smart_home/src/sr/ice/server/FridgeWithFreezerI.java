@@ -9,6 +9,7 @@ import java.util.Map;
 
 public class FridgeWithFreezerI extends FridgeI implements FridgeWithFreezer {
 
+//    private float freezerTemp = -5;
     private final Map<String, Float> freezerTemps = new HashMap<String, Float>();
     private final float minFreezerTemp = -10;
     private final float maxFreezerTemp = 5;
@@ -21,6 +22,7 @@ public class FridgeWithFreezerI extends FridgeI implements FridgeWithFreezer {
         }
         System.out.println(current.id.name + " - change freezer temperature to: " + newTemp);
         freezerTemps.put(current.id.name, newTemp);
+//        freezerTemp = newTemp;
     }
 
     @Override
@@ -28,5 +30,7 @@ public class FridgeWithFreezerI extends FridgeI implements FridgeWithFreezer {
         if(!freezerTemps.containsKey(current.id.name)) { freezerTemps.put(current.id.name, (float) -5); }
         System.out.println(current.id.name + " - get freezer temperature: " + freezerTemps.get(current.id.name));
         return freezerTemps.get(current.id.name);
+//        System.out.println(current.id + " - get freezer temperature: " + freezerTemp);
+//        return freezerTemp;
     }
 }

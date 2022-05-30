@@ -9,10 +9,10 @@ package sr.ice.server;
 // **********************************************************************
 
 import Devices.DevicesManager;
-import com.zeroc.Ice.Communicator;
-import com.zeroc.Ice.Util;
-import com.zeroc.Ice.ObjectAdapter;
-import com.zeroc.Ice.Identity;
+import com.zeroc.Ice.*;
+import com.zeroc.IceInternal.ServantManager;
+
+import java.lang.Exception;
 
 public class IceServer
 {
@@ -36,7 +36,7 @@ public class IceServer
 
 			// 3. Stworzenie serwanta/serwantów
 			String[] devices = {"fridge/f1", "fridge/f2", "fridge/fwf1", "microwave/m1",
-								"sensor/s1", "sensor/ps1", "sensor/ps2", "sensor/hs1"};
+								"sensor/s1", "psensor/ps1", "psensor/ps2", "hsensor/hs1"};
 			DevicesManagerI devicesManagerServant = new DevicesManagerI();
 			devicesManagerServant.setDevicesNames(devices, null);
 
@@ -51,14 +51,27 @@ public class IceServer
 			// 4. Dodanie wpisów do tablicy ASM, skojarzenie nazwy obiektu (Identity) z serwantem
 			adapter.add(devicesManagerServant, new Identity("dm", "manager"));
 
-			adapter.add(fridgeServant, new Identity("f1", "fridge"));
-			adapter.add(fridgeServant, new Identity("f2", "fridge"));
-			adapter.add(fridgeWithFreezerServant, new Identity("fwf1", "fridge"));
-			adapter.add(microwaveServant, new Identity("m1", "microwave"));
-			adapter.add(sensorServant, new Identity("s1", "sensor"));
-			adapter.add(pressureSensorServant, new Identity("ps1", "sensor"));
-			adapter.add(pressureSensorServant, new Identity("ps2", "sensor"));
-			adapter.add(humiditySensorServant, new Identity("hs1", "sensor"));
+			ServantLocator servantLocator = new ServantLocatorImplementation();
+			adapter.addServantLocator(servantLocator, "");
+
+			MyDefaultI myDefaultI = new MyDefaultI();
+			adapter.addDefaultServant(myDefaultI, "fridge");
+			adapter.addDefaultServant(myDefaultI, "microwave");
+
+			/* Kategorie obs³ugiwane przez default servanta - fridge i microwave.
+			* */
+//			adapter.add(fridgeServant, new Identity("f1", "fridge"));
+//			adapter.add(fridgeServant, new Identity("f2", "fridge"));
+// 			adapter.add(microwaveServant, new Identity("m1", "microwave"));
+
+			/* Kategorie obs³ugiwane przez servant locatora. Servanci tworzeni dla ka¿dego urz¹dzenia
+			 * osobno przy pierwszym wywo³aniu.
+			 * */
+//			adapter.add(fridgeWithFreezerServant, new Identity("fwf1", "fridge"));
+//			adapter.add(sensorServant, new Identity("s1", "sensor"));
+//			adapter.add(pressureSensorServant, new Identity("ps1", "sensor"));
+//			adapter.add(pressureSensorServant, new Identity("ps2", "sensor"));
+//			adapter.add(humiditySensorServant, new Identity("hs1", "sensor"));
 
 			// 5. Aktywacja adaptera i wejœcie w pêtlê przetwarzania ¿¹dañ
 			adapter.activate();

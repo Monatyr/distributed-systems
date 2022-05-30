@@ -18,6 +18,8 @@ public class SensorI implements Devices.Sensor {
         makeMeasurements(current);
         System.out.println(current.id.name + " - get temperature: " + temperatures.get(current.id.name));
         return temperatures.get(current.id.name);
+//        System.out.println(current.id + " - get temperature: " + temperature);
+//        return temperature;
     }
 
     @Override
@@ -25,6 +27,8 @@ public class SensorI implements Devices.Sensor {
         makeMeasurements(current);
         System.out.println(current.id.name + " - get luminous intensity: " + luminousIntensities.get(current.id.name));
         return  luminousIntensities.get(current.id.name);
+//        System.out.println(current.id + " - get luminous intensity: " + luminousIntensity);
+//        return luminousIntensity;
     }
 
     @Override
@@ -32,6 +36,8 @@ public class SensorI implements Devices.Sensor {
         System.out.println(current.id.name + " - making measurements");
         temperatures.put(current.id.name, (float) ((Math.random() * (30 - 12)) + 12));
         luminousIntensities.put(current.id.name, (float) (Math.random() * 10000));
+//        temperature = (float) ((Math.random() * (30 - 12)) + 12);
+//        luminousIntensity = (float) (Math.random() * 10000);
     }
 
     @Override
@@ -46,8 +52,10 @@ public class SensorI implements Devices.Sensor {
     public Map<String, Float> getAllMeasurements(Current current) {
         makeMeasurements(current);
         Map<String, Float> measurements = new HashMap<String, Float>();
-        measurements.put("temperature", temperatures.get(current.id.name));
-        measurements.put("luminousIntensity", luminousIntensities.get(current.id.name));
+        measurements.put("temperature [C]", temperatures.get(current.id.name));
+        measurements.put("luminousIntensity [lux]", luminousIntensities.get(current.id.name));
+//        measurements.put("temperature", temperature);
+//        measurements.put("luminousIntensity", luminousIntensity);
         System.out.print(current.id.name + " - sending measurements -");
         measurements.forEach((key, value) -> System.out.print(" " + key + ": " + value));
         return measurements;
