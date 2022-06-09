@@ -6,36 +6,47 @@ import com.zeroc.Ice.Object;
 
 public class ServantLocatorImplementation implements ServantLocator {
 
+    public DevicesManagerI devicesManagerI;
+
     @Override
     public LocateResult locate(Current current) throws UserException {
-//        Object obj = current.adapter.find(current.id);
-//        if (obj == null) {
-////            current.adapter.add(current., new Identity());
-//            System.out.println("[ServantLocator] Creating new Identity");
-//            return new LocateResult();
-//        }
         System.out.println("[ServantLocator] Creating new Servant for: " + current.id.category + "/" + current.id.name);
         String category = current.id.category.toLowerCase();
 
-        if (category.equals("freezer")) {
-            FridgeWithFreezerI fridgeWithFreezerI = new FridgeWithFreezerI();
-            current.adapter.add(fridgeWithFreezerI, current.id);
-            return new LocateResult(fridgeWithFreezerI, null);
-        }
-        else if (category.equals("sensor")) {
-            SensorI sensorI = new SensorI();
-            current.adapter.add(sensorI, current.id);
-            return new LocateResult(sensorI, null);
-        }
-        else if (category.equals("hsensor")) {
-            HumiditySensorI humiditySensorI = new HumiditySensorI();
-            current.adapter.add(humiditySensorI, current.id);
-            return new LocateResult(humiditySensorI, null);
-        }
-        else if (category.equals("psensor")) {
-            PressureSensorI pressureSensorI = new PressureSensorI();
-            current.adapter.add(pressureSensorI, current.id);
-            return new LocateResult(pressureSensorI, null);
+        String[] newName = {current.id.category + "/" + current.id.name};
+        devicesManagerI.setDevicesNames(newName, null);
+
+        switch (category) {
+            case "freezer" -> {
+                FridgeWithFreezerI fridgeWithFreezerI = new FridgeWithFreezerI();
+                current.adapter.add(fridgeWithFreezerI, current.id);
+                return new LocateResult(fridgeWithFreezerI, null);
+            }
+            case "sensor" -> {
+                SensorI sensorI = new SensorI();
+                current.adapter.add(sensorI, current.id);
+                return new LocateResult(sensorI, null);
+            }
+            case "hsensor" -> {
+                HumiditySensorI humiditySensorI = new HumiditySensorI();
+                current.adapter.add(humiditySensorI, current.id);
+                return new LocateResult(humiditySensorI, null);
+            }
+            case "psensor" -> {
+                PressureSensorI pressureSensorI = new PressureSensorI();
+                current.adapter.add(pressureSensorI, current.id);
+                return new LocateResult(pressureSensorI, null);
+            }
+            case "fridge" -> {
+                FridgeI fridgeI = new FridgeI();
+                current.adapter.add(fridgeI, current.id);
+                return new LocateResult(fridgeI, null);
+            }
+            case "microwave" -> {
+                MicrowaveI microwaveI = new MicrowaveI();
+                current.adapter.add(microwaveI, current.id);
+                return new LocateResult(microwaveI, null);
+            }
         }
         return null;
     }

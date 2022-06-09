@@ -22,8 +22,8 @@ public class DevicesManagerI implements DevicesManager {
 
     @Override
     public void setDevicesNames(String[] names, Current current) {
-        devicesIds = Arrays.stream(names).toList();
-        System.out.print("[DeviceManager] Set devices' names: ");
+        devicesIds.addAll(Arrays.stream(names).toList());
+        System.out.print("[DeviceManager] Adding devices' names: ");
         for(int i = 0; i < names.length; i++){
             System.out.print(names[i] + " ");
         }
